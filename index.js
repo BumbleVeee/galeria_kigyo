@@ -1,6 +1,7 @@
-import  Kep  from "./Kep.js";
-import { KEPLISTA } from "./Kep.js";
+import  Kep  from "./kep.js";
+import Kepek from "./kepek.js";
+import { KEPLISTA } from "./keplista.js";
 
 const szuloElem = document.querySelector(".tarolo")
-//const kep = new Kep(KEPLISTA[0], szuloElem)
+const kepek = new Kepek(KEPLISTA, szuloElem)
 
