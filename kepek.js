@@ -1,19 +1,27 @@
-import { KEPLISTA } from "./keplista.js";
 import  Kep  from "./kep.js";
+import { KEPLISTA } from "./keplista.js";
 
 export default class Kepek{
-    constructor(KEPLISTA, szuloElem){
-        this.KEPLISTA = KEPLISTA
+    #lista = []
+    constructor(szuloElem){
         this.szuloElem = szuloElem
-        this.kepek = []
-        this.megjelenit(KEPLISTA)
+        for (let index = 0; index < KEPLISTA.length; index++) {
+            /*const element = KEPLISTA[index];
+            const kep = new Kep(element, szuloElem)
+            this.#lista.push(kep)*/
+            this.#lista.push(new Kep(KEPLISTA[index], szuloElem))
+        }
+        //this.megjelenit(szuloElem)   -----> NE HÍVD MEG!!! 🤦‍♀️
     }
 
-    megjelenit(KEPLISTA){
-        this.kepek = []
-        KEPLISTA.forEach((kep) => {
-            const kepek = new Kep(kep, this.szuloElem);
-            this.kepek.push(kepek);
-        });
+    megjelenit(szuloElem){
+        for (let index = 0; index < this.#lista.length; index++) {
+            //this.getLista()[index].megjelenit()
+            new Kep(this.getLista()[index], szuloElem)
+        }
+    }
+
+    getLista(){
+        return this.#lista
     }
 }

@@ -1,18 +1,14 @@
 export default class Kep{
     #obj={}
-    constructor(obj={src,cim,leiras,index}, szuloElem) {
-        this.#obj=obj;
+    constructor(obj={src,cim,leiras,index}, szuloElem){
+        this.#obj = obj
         this.szuloElem = szuloElem
         this.megjelenit()
         this.kivalasztEsemeny()
-        //this.buttonElem=this.kepElem.querySelector("img")
-        /*this.buttonElem.addEventListener("click", function (event) {
-            console.log(event.target)
-        })*/
     }
 
     megjelenit(){
-        let kod=`
+        let kod =`
             <div class="kartya">
                 <img src="${this.#obj.src}" alt="${this.#obj.index}">
                 <p>${this.#obj.cim}</p>
@@ -33,8 +29,11 @@ export default class Kep{
     }
 
     kivalasztEsemeny(){
-        this.elem.addEventListener("click", ()=>{
-            this.sajatEsemeny();
-        })
+        const kepElem = this.szuloElem.querySelector(".kartya:last-child");
+        kepElem.addEventListener("click", ()=>{
+            console.log("katt : ", this.#obj.index);
+            const e = new CustomEvent("kivalaszt", { detail: this.#obj.index});
+            window.dispatchEvent(e);
+        });
     }
 }
